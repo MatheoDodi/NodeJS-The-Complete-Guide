@@ -40,4 +40,4 @@ server.listen(3000);
 
 Two things going on here. The `res.setHeader('Content-Type', 'text/html');` command basically tells the browser that _Hey, I'm about to send you some HTML now, okay? Get ready_. And `res.write()` sends everything we have in the parentheses over to the browser.
 
-Now like I mentioned above, this is neither clean nor efficient. If only there was a better way...
+Now like I mentioned above, this is neither clean nor efficient. If only there was a better way... 🙊 Express.js 🙊
