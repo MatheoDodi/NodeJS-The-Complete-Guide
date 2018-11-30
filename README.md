@@ -41,3 +41,20 @@ server.listen(3000);
 Two things going on here. The `res.setHeader('Content-Type', 'text/html');` command basically tells the browser that _Hey, I'm about to send you some HTML now, okay? Get ready_. And `res.write()` sends everything we have in the parentheses over to the browser.
 
 Now like I mentioned above, this is neither clean nor efficient. If only there was a better way... 🙊 Express.js 🙊
+
+### Handling routes
+
+Oh boy, are you going to hate this.
+
+So what if we want to handle different routes? Well...
+
+```
+const url = req.url;
+  if (url === '/') {
+    res.write('Hi');
+  } else if (url === '/other') {
+    res.write('Hello');
+  }
+```
+
+Yeah I know, not optimal, but don't worry, all of this will be much easier when Express comes in to save the day.
