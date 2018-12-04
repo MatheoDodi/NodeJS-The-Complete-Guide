@@ -4,13 +4,12 @@ const router = express.Router();
 
 router.get('/add-product', (req, res, next) => {
   res.send(
-    '<form action="/product" method="POST"><input type="text" name="title"><button>Add Product</button></form>'
+    '<form action="/admin/product" method="POST"><input type="text" name="title"><button>Add Product</button></form>'
   );
 });
 
-router.use('/product', (req, res, next) => {
-  console.log(req.body);
-  res.redirect('/');
+router.post('/product', (req, res, next) => {
+  res.redirect('/home');
 });
 
 module.exports = router;
