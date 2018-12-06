@@ -15,7 +15,6 @@ const server = http.createServer((req, res) => {
     req.on('data', chunk => body.push(chunk));
     req.on('end', () => {
       const message = Buffer.concat(body).toString();
-      console.log(message);
       fs.writeFileSync('message.txt', message);
     });
 
