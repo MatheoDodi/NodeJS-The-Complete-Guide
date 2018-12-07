@@ -1,29 +1,23 @@
 {
-  "name": "nodejs-the-complete-guide",
+  "name": "nodejs-complete-guide",
   "version": "1.0.0",
-  "description": "The beautiful journey of learning how to build RESTful APIs and interacting with databases with the power of NodeJS. wow- that sounded like a commercial.",
+  "description": "Complete Node.js Guide",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MatthewDodi/NodeJS-The-Complete-Guide.git"
-  },
-  "author": "",
+  "author": "Maximilian Schwarzmüller",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MatthewDodi/NodeJS-The-Complete-Guide/issues"
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   },
-  "homepage": "https://github.com/MatthewDodi/NodeJS-The-Complete-Guide#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
+    "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "pug": "^2.0.3"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.7"
   }
 }
