@@ -40,3 +40,16 @@ exports.getCheckout = (req, res, next) => {
     pageTitle: 'Checkout'
   });
 };
+
+exports.getProductById = (req, res, next) => {
+  const { id } = req.params;
+  let product;
+  Product.fetchAll(products => {
+    product = Product.getSingleProductById(products, id)[0];
+    res.render('shop/product-detail', {
+      product,
+      pageTitle: 'Shop',
+      path: `/products/${id}`
+    });
+  });
+};

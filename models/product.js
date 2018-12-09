@@ -26,12 +26,18 @@ module.exports = class Product {
   }
 
   save() {
+    this.id = Math.random().toString();
     getProductsFromFile(products => {
       products.push(this);
       fs.writeFile(p, JSON.stringify(products), err => {
         console.log(err);
       });
     });
+  }
+
+  static getSingleProductById(products, id) {
+    const product = products.filter(prod => id === prod.id);
+    return product;
   }
 
   static fetchAll(cb) {
