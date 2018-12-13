@@ -73,11 +73,9 @@ exports.getCheckout = (req, res, next) => {
 
 exports.getProductById = (req, res, next) => {
   const { id } = req.params;
-  let product;
-  Product.fetchAll(products => {
-    product = Product.getSingleProductById(products, id)[0];
+  Product.getSingleProductById(id).then(([product]) => {
     res.render('shop/product-detail', {
-      product,
+      product: product[0],
       pageTitle: 'Shop',
       path: `/products/${id}`
     });

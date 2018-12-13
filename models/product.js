@@ -16,7 +16,9 @@ module.exports = class Product {
     );
   }
 
-  static getSingleProductById(products, id) {}
+  static getSingleProductById(id) {
+    return db.execute('SELECT * FROM products WHERE products.id = ?', [id]);
+  }
 
   static deleteProductById(products, id) {}
 
