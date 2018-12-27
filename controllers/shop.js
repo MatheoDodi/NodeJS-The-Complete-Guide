@@ -81,3 +81,14 @@ exports.getProductById = (req, res, next) => {
     });
   });
 };
+
+exports.getLogin = (req, res, next) => {
+  res.render('shop/login', {
+    path: '/login',
+    pageTitle: 'Login'
+  });
+};
+
+exports.postLogin = (req, res, next) => {
+  res.redirect('/');
+};

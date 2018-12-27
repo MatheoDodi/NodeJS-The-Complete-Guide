@@ -22,4 +22,6 @@ router.get('/orders', shopController.getOrders);
 
 router.get('/products/:id', shopController.getProductById);
 
+router.get('/login', shopController.getLogin);
+
 module.exports = router;
