@@ -24,4 +24,6 @@ router.get('/products/:id', shopController.getProductById);
 
 router.get('/login', shopController.getLogin);
 
+router.post('/login', shopController.postLogin);
+
 module.exports = router;
