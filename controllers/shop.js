@@ -16,7 +16,6 @@ exports.getProducts = (req, res, next) => {
 exports.getIndex = (req, res, next) => {
   const isLoggedIn = req.session.isLoggedIn;
   Product.fetchAll().then(([rows, fieldData]) => {
-    console.log(req.session);
     res.render('shop/product-list', {
       prods: rows,
       pageTitle: 'Home',
@@ -28,40 +27,29 @@ exports.getIndex = (req, res, next) => {
 
 exports.getCart = (req, res, next) => {
   const isLoggedIn = req.session.isLoggedIn;
-  Cart.getProducts(cart => {
-    Product.fetchAll(products => {
-      const cartProducts = [];
-      for (product of products) {
-        const cartProductData = cart.products.find(
-          prod => prod.id === product.id
-        );
-        if (cartProductData) {
-          cartProducts.push({ productData: product, qty: cartProductData.qty });
-        }
-      }
-      res.render('shop/cart', {
-        path: '/cart',
-        pageTitle: 'Your Cart',
-        products: cartProducts,
-        isLoggedIn
-      });
+  Cart.getProducts().then(([rows, fields]) => {
+    console.log(rows);
+    res.render('shop/cart', {
+      path: '/cart',
+      pageTitle: 'Your Cart',
+      products: rows,
+      isLoggedIn
     });
   });
 };
 
 exports.postCart = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.fetchAll(products => {
-    const product = Product.getSingleProductById(products, prodId)[0];
-    Cart.addProduct(prodId, product.price);
+  Cart.addProduct(prodId).then(() => {
+    res.redirect('/');
   });
-  res.redirect('/cart');
 };
 
 exports.deleteCart = (req, res, next) => {
   const { productId, productPrice } = req.body;
-  Cart.deleteProduct(productId, productPrice);
-  res.redirect('/cart');
+  Cart.deleteProduct(productId).then(() => {
+    res.redirect('/cart');
+  });
 };
 
 exports.getOrders = (req, res, next) => {

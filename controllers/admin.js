@@ -27,9 +27,8 @@ exports.postAddProduct = (req, res, next) => {
 
 exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.fetchAll(products => {
-    Product.deleteProductById(products, prodId);
-    return res.redirect('/');
+  Product.deleteProductById(prodId).then(() => {
+    res.redirect('/');
   });
 };
 
@@ -38,7 +37,6 @@ exports.getEditProduct = (req, res, next) => {
   const prodId = req.params.productId;
   Product.fetchAll(products => {
     const product = Product.getSingleProductById(products, prodId)[0];
-    console.log(product);
     if (!product) {
       return res.redirect('/');
     }
@@ -55,7 +53,6 @@ exports.getEditProduct = (req, res, next) => {
 };
 
 exports.postEditProduct = (req, res, next) => {
-  console.log(req.body);
   const prodId = req.body.productId;
   const updatedTitle = req.body.title;
   const updatedPrice = req.body.price;
